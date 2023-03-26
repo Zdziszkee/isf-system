@@ -11,7 +11,9 @@ import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StoreTest {
+public class StoreWorkerTest {
+
+
     @Test
     public void testGetWorkerAvailabilityWhenNoAssignments() {
         StoreWorker worker = new StoreWorker("Alice", LocalTime.of(9, 0), LocalTime.of(9, 0));
@@ -24,11 +26,8 @@ public class StoreTest {
     @Test
     public void testGetWorkerAvailabilityWhenHasAssignments() {
         StoreWorker worker = new StoreWorker("Bob", LocalTime.of(10, 0), LocalTime.of(9, 0));
-        Assignment assignment1 = new Assignment(new Order("order-1", new BigDecimal(2),
-                Duration.ofHours(1), LocalTime.of(11, 0), LocalTime.of(10, 0)), LocalTime.of(10,
-                0));
-        Assignment assignment2 = new Assignment(new Order("order-2", new BigDecimal(2),
-                Duration.ofHours(1), LocalTime.of(12, 0), LocalTime.of(10, 30)), LocalTime.of(11,
+        Assignment assignment1 = new Assignment(new Order("order-1", new BigDecimal(2), Duration.ofHours(1), LocalTime.of(11, 0), LocalTime.of(10, 0)), LocalTime.of(10, 0));
+        Assignment assignment2 = new Assignment(new Order("order-2", new BigDecimal(2), Duration.ofHours(1), LocalTime.of(12, 0), LocalTime.of(10, 30)), LocalTime.of(11,
                 0));
 
 

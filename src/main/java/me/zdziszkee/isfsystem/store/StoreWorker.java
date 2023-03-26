@@ -1,28 +1,47 @@
 package me.zdziszkee.isfsystem.store;
 
-import me.zdziszkee.isfsystem.model.Order;
-import me.zdziszkee.isfsystem.model.Picker;
+import me.zdziszkee.isfsystem.model.Assignment;
 
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.time.LocalTime;
+import java.util.*;
 
-public class Worker {
-    private final Picker picker;
-    private final PriorityQueue<Order> orders = new PriorityQueue<>(Comparator.comparing(Order::completeBy));
+public class StoreWorker {
+    private final String picker;
+    private final LocalTime pickingStartTime;
+    private final LocalTime pickingEndTime;
+    private final TreeSet<Assignment> assignments =
+            new TreeSet<>(Comparator.comparing(Assignment::startTime));
 
-    public Worker(final Picker picker) {
+    public StoreWorker(final String picker, LocalTime pickingStartTime, LocalTime pickingEndTime) {
         this.picker = picker;
+        this.pickingStartTime = pickingStartTime;
+        this.pickingEndTime = pickingEndTime;
     }
 
-    public Duration getWorkerJobDuration() {
-        return orders.stream()
-                     .map(Order::pickingTime)
-                     .reduce(Duration::plus)
-                     .orElse(Duration.ofHours(0));
+    public LocalTime getWorkerAvailability() {
+        if (assignments.isEmpty()) {
+            return pickingStartTime;
+        }
+        Assignment assignment = assignments.last();
+        return assignment.startTime()
+                         .plus(assignment.order()
+                                         .pickingTime());
     }
 
-    public void addJob(Order order) {
-        orders.add(order);
+    public void add(Assignment assignment) {
+        assignments.add(assignment);
+    }
+
+    public void printAssignments() {
+        for (Assignment assignment : assignments) {
+            System.out.printf(picker + " ");
+            System.out.printf(assignment.order()
+                                        .orderId() + " ");
+            System.out.printf(assignment.startTime() + " \n");
+        }
+    }
+
+    public String getId() {
+        return picker;
     }
 }

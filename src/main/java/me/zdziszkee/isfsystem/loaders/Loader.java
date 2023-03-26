@@ -1,6 +1,4 @@
-package me.zdziszkee.isfsystem.loader;
-
-import me.zdziszkee.isfsystem.model.StoreConfiguration;
+package me.zdziszkee.isfsystem.loaders;
 
 import java.io.InputStream;
 

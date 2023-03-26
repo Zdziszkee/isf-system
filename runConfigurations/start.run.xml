@@ -1,9 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="start" type="JarApplication">
+    <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/isf-system-1.0-SNAPSHOT-all.jar" />
     <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/src/test/resources/self-test-data/advanced-allocation/store.json $PROJECT_DIR$/src/test/resources/self-test-data/advanced-allocation/orders.json" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="clean" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
       <option name="Gradle.BeforeRunTask" enabled="true" tasks="shadowJar" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
     </method>
   </configuration>
