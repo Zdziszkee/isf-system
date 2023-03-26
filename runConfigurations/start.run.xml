@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="start" type="JarApplication">
+    <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/src/test/resources/self-test-data/advanced-allocation/store.json $PROJECT_DIR$/src/test/resources/self-test-data/advanced-allocation/orders.json" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="shadowJar" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+    </method>
+  </configuration>
+</component>
